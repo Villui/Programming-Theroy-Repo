@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Helicopter : Vehicle
+public class Helicopter : Vehicle //INHERITANCE
 {
     // Start is called before the first frame update
     [SerializeField]
@@ -10,7 +10,7 @@ public class Helicopter : Vehicle
 
     new void Start()
     {
-        base.Start();
+        base.Start(); 
         rolloverRotation = 60.0f;
         setHorsePower(3000.0f);
         setTurnSpeed(90.0f);
@@ -22,7 +22,7 @@ public class Helicopter : Vehicle
             playerMovement();
     }
 
-    private void playerMovement()
+    private void playerMovement() // ABSTRACTION
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");

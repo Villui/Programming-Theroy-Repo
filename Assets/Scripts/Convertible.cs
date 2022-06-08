@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Convertible : Vehicle
+public class Convertible : Vehicle //INHERITANCE
 {
     [SerializeField] List<WheelCollider> allWheels;
     [SerializeField] int wheelsOnGround;
@@ -10,7 +10,7 @@ public class Convertible : Vehicle
     // Update is called once per frame
     new void Start()
     {
-        base.Start();
+        base.Start(); // POLYMORPHISM
         setHorsePower(20000.0f);
         setTurnSpeed(60.0f);
     }
@@ -20,7 +20,7 @@ public class Convertible : Vehicle
         playerMovement();
     }
 
-    private void playerMovement()
+    private void playerMovement() // ABSTRACTION
     {
         currentSpeed = GetCurrentSpeed();
         horizontalInput = Input.GetAxis("Horizontal");

@@ -7,7 +7,7 @@ public class Vehicle : MonoBehaviour
     protected float m_horsePower;
     public float horsePower // delete semicolon
     {
-        get { return m_horsePower; } // getter returns backing field
+        get { return m_horsePower; } // getter returns backing field // ENCAPSULATION
         set
         {
             if (value < 0.0f)
