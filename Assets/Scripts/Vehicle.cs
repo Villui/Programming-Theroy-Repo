@@ -4,7 +4,23 @@ using UnityEngine;
 
 public class Vehicle : MonoBehaviour
 {
-    protected float horsePower;
+    protected float m_horsePower;
+    public float horsePower // delete semicolon
+    {
+        get { return m_horsePower; } // getter returns backing field
+        set
+        {
+            if (value < 0.0f)
+            {
+
+                Debug.LogError("You can't set a negative horsepower value!");
+            }
+            else
+            {
+                m_horsePower = value; // original setter now in if/else statement
+            }
+        }
+    }
     protected float turnSpeed;
     protected float horizontalInput;
     protected float verticalInput;

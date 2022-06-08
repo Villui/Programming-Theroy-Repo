@@ -17,24 +17,21 @@ public class Convertible : Vehicle
 
     void FixedUpdate()
     {
-        currentSpeed = GetCurrentSpeed();
         playerMovement();
     }
 
-    public virtual void playerMovement()
+    private void playerMovement()
     {
+        currentSpeed = GetCurrentSpeed();
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         if (IsOnGround())
         {
-            //Move the vehicle forward
-            //transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
             if (currentSpeed < 0.1f)
             {
                 transform.position += new Vector3(0.0f, 0.2f, 0.0f);
             }
-            playerRb.AddRelativeForce(Vector3.forward * verticalInput * horsePower);
-            //Turning the vehicle
+            playerRb.AddRelativeForce(Vector3.forward * verticalInput * m_horsePower);
             transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * horizontalInput);
         }
     }

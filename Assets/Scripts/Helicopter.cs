@@ -5,9 +5,8 @@ using UnityEngine;
 public class Helicopter : Vehicle
 {
     // Start is called before the first frame update
+    [SerializeField]
     private float rolloverRotation;
-    private bool isLeftRollover;
-    private bool isRightRollover;
 
     new void Start()
     {
@@ -23,16 +22,13 @@ public class Helicopter : Vehicle
             playerMovement();
     }
 
-    public virtual void playerMovement()
+    private void playerMovement()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        //Move the vehicle forward
-        //transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         if (Input.GetButton("Jump"))
         {
-            Debug.Log("Spacebar");
-            playerRb.AddRelativeForce(Vector3.up * horsePower);
+            playerRb.AddRelativeForce(Vector3.up * m_horsePower);
         }
         if (Input.GetKey("e"))
         {
@@ -42,7 +38,6 @@ public class Helicopter : Vehicle
         {
             transform.Rotate(Vector3.forward * Time.deltaTime * rolloverRotation);
         }
-        //Turning the vehicle
         transform.Rotate(Vector3.right * Time.deltaTime * turnSpeed * verticalInput);
         transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * horizontalInput);
     }
